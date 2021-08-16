@@ -1,3 +1,3 @@
-# CP_Practice
+# DSA_Practice
 
-This repo contains my codes of Competitive Programming.
+This repo contains my codes of Data Structures and Algorithms.
