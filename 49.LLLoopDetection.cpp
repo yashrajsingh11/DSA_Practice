@@ -13,7 +13,6 @@ struct node {
         data = x;
         next = NULL;
     }
-
 };
 
 bool detectLoop(struct node* head) {
