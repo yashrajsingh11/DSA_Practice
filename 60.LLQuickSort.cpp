@@ -21,8 +21,20 @@ void display(struct node* head) {
     }
 }
 
-void quickSort(struct node **head) {
+struct node* sort(struct node* head, struct node* tail) {
     
+}
+
+void quickSort(struct node **headRef) {
+    if(*headRef -> next == NULL) {
+        return ;
+    }
+    struct node* tail = *headRef;
+    struct node* head = *headRef;
+    while(tail -> next != NULL) {
+        tail = tail -> next;
+    }
+    *headRef = sort(head, tail);
 }
 
 int main() {
