@@ -1,4 +1,5 @@
-// Approach : 
+// Approach : Find all the 1 in the grid. Now apply Breadth-First-Search Algorithm to update the values of adjacent cells in the grid.
+// 			Keep track of the iterations in order to fill the cells.
 
 #include <iostream>
 #include <queue>

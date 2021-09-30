@@ -33,7 +33,6 @@ public:
 
 	LRUCache(int cap) {
 		size = cap;
-
 		for(int i = 0; i < 1001; i++) {
 			address[i] = NULL;
 		}
@@ -48,9 +47,43 @@ public:
 		cout << endl;
 	}
 
+	void removeNodeAtIndex(int key) {
+		struct node* temp = address[key];
+		if(temp == head) {
+			head = head -> next;
+		}
+		if(temp == tail) {
+			tail = tail -> prev;
+		}
+		if(temp -> next != NULL) {
+			temp -> next -> prev = temp -> prev;
+		}
+		if(temp -> prev != NULL) {
+			temp -> prev -> next = temp -> next;
+		}
+		delete(temp);
+		address[key] = NULL;
+	}
+
+    void insertNodeAtEnd(int key, int value) {
+    	if(head == NULL) {
+    		head = new node(key, value);
+    		tail = head;
+    	}
+    	else {
+    		tail -> next = new node(key, value);
+    		tail -> next -> prev = tail;
+    		tail = tail -> next;
+    	}
+    	address[key] = tail;
+    }
+
 	int get(int key) {
         if(address[key] != NULL) {
-        	return address[key] -> value;
+        	int result = address[key] -> value;
+        	removeNodeAtIndex(key);
+    		insertNodeAtEnd(key, result);
+    		return result;
         }
         else {
         	return -1;
@@ -59,74 +92,18 @@ public:
 
     void set(int key, int value) {
     	if(address[key] != NULL) {
-    		struct node* temp = address[key];
-    		address[key] = NULL;
-    		
-    		if(temp == head) {
-    			head = head -> next;
-    		}
-    		if(temp == tail) {
-    			tail = tail -> prev;
-    		}
-    		if(temp -> next != NULL) {
-    			temp -> next -> prev = temp -> prev;
-    		}
-    		if(temp -> prev != NULL) {
-    			temp -> prev -> next = temp -> next;
-    		}
-    		delete(temp);
-
-    		if(head == NULL) {
-	    		head = new node(key, value);
-	    		tail = head;
-	    	}
-	    	else {
-	    		tail -> next = new node(key, value);
-	    		tail -> next -> prev = tail;
-	    		tail = tail -> next;
-	    	}
-    		address[key] = tail;
+    		removeNodeAtIndex(key);
+    		insertNodeAtEnd(key, value);
     		return;
     	}
     	if(count == size) {
-    		int temp = head -> key;
-    		if(head == tail) {
-    			struct node* temporary = head;
-    			head = NULL;
-    			tail = NULL;
-    			delete(temporary);
-    		}
-    		else {
-    			struct node* temporary = head;
-    			head = head -> next;
-    			head -> prev = NULL;
-    			delete(temporary);
-    		}
-    		address[temp] = NULL;
-
-    		if(head == NULL) {
-	    		head = new node(key, value);
-	    		tail = head;
-	    	}
-	    	else {
-	    		tail -> next = new node(key, value);
-	    		tail -> next -> prev = tail;
-	    		tail = tail -> next;
-	    	}
-    		address[key] = tail;
+    		int headKey = head -> key;
+    		removeNodeAtIndex(headKey);
+    		insertNodeAtEnd(key, value);
     	}
     	else {
-	    	if(head == NULL) {
-	    		head = new node(key, value);
-	    		tail = head;
-	    	}
-	    	else {
-	    		tail -> next = new node(key, value);
-	    		tail -> next -> prev = tail;
-	    		tail = tail -> next;
-	    	}
+    		insertNodeAtEnd(key, value);
 	    	count++;
-	    	address[key] = tail;
 	    }
     }
 };
