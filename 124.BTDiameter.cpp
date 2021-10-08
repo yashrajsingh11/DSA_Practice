@@ -1,4 +1,4 @@
-// Approach 1 : We have a recursive function which takes computes the diameter of its left subtree and right subtree and a recursive function
+// Approach 1 : We have a recursive function which computes the diameter of its left subtree and right subtree and a recursive function
 // which computes the height of left and right subtree. diameter of the tree including itself will be leftHeight + rightHeight + 1;
 // compare the 3 diameters and return the maximum. At the end we will have the maximum diameter of the tree. O(n^2) time.
 
