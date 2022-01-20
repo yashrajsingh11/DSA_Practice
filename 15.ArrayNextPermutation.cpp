@@ -39,7 +39,7 @@ void nextPermutation(vector<int>& nums) {
 
 int main() {
 	vector<int> nums {
-		3, 1, 7, 5
+		3, 7, 5, 1
 	};
 	nextPermutation(nums);
 	for(int i = 0; i < nums.size(); i++) {

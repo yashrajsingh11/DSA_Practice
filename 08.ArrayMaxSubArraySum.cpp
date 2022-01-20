@@ -3,6 +3,11 @@
 
 // ---------------->> Approach 1 <<--------------------
 
+#include <iostream>
+#include <climits>
+
+using namespace std;
+
 int maxSubarraySum(int arr[], int n){
     int localMax = 0;
     int globalMax = INT_MIN;
@@ -13,6 +18,13 @@ int maxSubarraySum(int arr[], int n){
         }
     }
     return globalMax;
+}
+
+int main() {
+    int arr[] = {20, 4, -10, 55, -80, 33, 12, -32};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    cout << maxSubarraySum(arr, n);
+    return 0;
 }
 
 // ---------------->> Approach 2 <<--------------------

@@ -33,27 +33,65 @@
 
 // ---------------->> Approach 2 <<--------------------
 
-void sort012(int a[], int n) {
+// void sort012(int a[], int n) {
+//     int low = 0;
+//     int mid = 0;
+//     int high = n-1;
+    
+//     while(mid <= high) {
+//         if(a[mid] == 0) {
+//             int temp = a[mid];
+//             a[mid] = a[low];
+//             a[low] = temp;
+//             low++;
+//             mid++;
+//         }
+//         else if(a[mid] == 1) {
+//             mid++;
+//         }
+//         else {
+//             int temp = a[mid];
+//             a[mid] = a[high];
+//             a[high] = temp;
+//             high--;
+//         }
+//     }
+// }
+
+#include <iostream>
+
+using namespace std;
+
+void print(int arr[], int n) {
+    for(int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+}
+
+void simpleSort(int arr[], int n) {
     int low = 0;
     int mid = 0;
-    int high = n-1;
-    
-    while(mid <= high) {
-        if(a[mid] == 0) {
-            int temp = a[mid];
-            a[mid] = a[low];
-            a[low] = temp;
+    int high = n - 1;
+    while(mid < high) {
+        if(arr[mid] == 0) {
+            swap(arr[low], arr[mid]);
             low++;
             mid++;
         }
-        else if(a[mid] == 1) {
+        else if(arr[mid] == 1) {
             mid++;
         }
         else {
-            int temp = a[mid];
-            a[mid] = a[high];
-            a[high] = temp;
+            swap(arr[mid], arr[high]);
             high--;
         }
     }
+}
+
+int main() {
+    int arr[] = {1, 1, 2, 2, 1, 0, 0, 1, 0, 2, 1, 0};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    simpleSort(arr, n);
+    print(arr, n);
+    return 0;
 }

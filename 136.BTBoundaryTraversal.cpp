@@ -1,7 +1,7 @@
 // Approach : First pushback the head into vector, if it is the only element then return else, if left is not null we find the list of
-// all the leftmost nodes. Then we print all the leaf nodes(remove the last leftmost node as it will be the first leaf node), by 
-// recursively checking if the node has no left and right node. Then if the right is not null we find the list of all the rightmost nodes
-// (remove the last leaf node as it will be the first rightmost node).
+// all the leftmost nodes. Then we print all the leaf nodes(remove the last leftmost node as it will be the first leaf node), now 
+// recursively check if the node has no left and right node, then it is leaf node add it to vector. Then if the right is not null we find 
+// the list of all the rightmost nodes (remove the last leaf node as it will be the first rightmost node).
 
 #include <iostream>
 #include <vector>

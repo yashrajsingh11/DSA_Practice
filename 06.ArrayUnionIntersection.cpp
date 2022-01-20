@@ -1,6 +1,6 @@
-// Approach 1: Using an arryay of size m+n and storing the element of a in c like(a[0] = 6, c[6] = 1) "faster"
+// Approach 1: Using an array of size m+n and storing the element of a in c like(a[0] = 6, c[6] = 1) "faster" (hashing)
 // Approach 2: Using set from stl 
-// Approach 3: Sorting then searching "didnt do since it wasnt a fasrer approach"
+// Approach 3: Sorting then searching "didnt do since it wasnt a faster approach"
 
 // ---------------->> Approach 1 <<--------------------
 
